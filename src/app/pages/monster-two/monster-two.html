@@ -1,0 +1,26 @@
+<div class="card">
+    <form (submit)="submit($event)">
+        <!-- les inputs -->
+        <div class="cardBox" style="border: none;">
+            <div class="form-field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" [formControl]="name">
+                @if (name.invalid && (name.dirty || name.touched)) {
+                <div class="error">This field is required.</div>
+                }
+            </div>
+            <div class="form-field">
+                <label for="name">HP</label>
+                <input id="hp" name="hp" type="number" [formControl]="hp" />
+                @if (hp.invalid && (hp.dirty || hp.touched)) {
+                <div class="error">This field is not valid.</div>
+                }
+            </div>
+        </div>
+        <!-- button de validation -->
+        <div class="card" style="border: none;">
+            <button type="submit" [disabled]="name.invalid || hp.invalid">Save</button>
+            <button style="margin: 1rem;" (click)="name.setValue('Changed')">Set Changed Name</button>
+        </div>
+    </form>
+</div>

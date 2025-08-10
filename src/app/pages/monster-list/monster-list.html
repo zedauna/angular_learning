@@ -1,0 +1,121 @@
+<!-- Hello word -->
+<div class="card">
+    <h3 class="info">Init Angualr</h3>
+    <h1>Hello World !</h1>
+</div>
+
+<!-- carte à jour -->
+<div class="card">
+    <h3 class="info">carte à jour</h3>
+    <app-playing-card />
+</div>
+
+<!-- Recherche ( input et output) -->
+<div class="cardBox">
+    <h3 class="info">Barre de Recherche</h3>
+    <div id="search-bar-container">
+        <app-search-bar 
+            (searchButtonClicked)="increaseCount()" 
+            [(search)]="search" 
+            (searchChange)="search = $event" 
+        />
+
+        <app-search-bar-two
+            (searchButtonClicked)="increaseCount()"
+            [(search)]="search"
+            (searchChange)="search = $event"
+        />
+    </div>
+
+    <div class="count">
+        <p>Search : {{search}}</p>
+        <p>Clicked Count : {{count}}</p>
+    </div>
+</div>
+
+<!-- Carte à jour avec selection -->
+<div id="card-list">
+    <h3 class="info">carte à jour avec selection par index avec SIGNAL</h3>
+    <app-playing-card />
+    <app-playing-card-two />
+    <app-playing-card [monster]="monsters()[1]" />
+    <app-playing-card-two [monster]="monsters()[1]" />
+</div>
+
+<app-monster-toggle />
+
+<!-- Carte à jour avec des boucles -->
+<div class="cardBox" style="width: auto;height: auto;">
+    <h3 class="info">Boucle pour lister des cartes : ngFor et ngIF </h3>
+    <app-search-bar [(search)]="searchTwo"></app-search-bar>
+    <div class="card" style="border: none;">
+        <app-playing-card-boucle *ngFor="let monster of filteredMonsters()" [monster]="monster" />
+    </div>
+    <div class="cardBox" style="border: none;align-items: center;">
+        <div *ngIf="filteredMonsters().length==0" class="center">No monsters found !</div>
+        <div *ngIf="filteredMonsters().length>0" class="center">Found {{filteredMonsters().length}} monsters !</div>
+    </div>
+    <div class="cardBox" style="border: none;align-items: center; color:red;">
+        <div *ngIf="filteredMonsters().length==0;else found" class="center">No monsters found !</div>
+        <ng-template #found>
+            <div class="center">Found {{filteredMonsters().length}} monsters !</div>
+        </ng-template>
+    </div>
+</div>
+
+<div class="cardBox" style="width: auto;height: auto;">
+    <h3 class="info">Boucle pour lister des cartes : "FOR, IF et ELSE" </h3>
+    <app-search-bar [(search)]="searchTwo"></app-search-bar>
+    <div class="card" style="border: none;">
+        @for (monster of filteredMonsters(); track monster){
+        <app-playing-card-boucle [monster]="monster" />
+        }
+    </div>
+    <div class="cardBox" style="border: none;align-items: center; color:rgb(255, 0, 242);">
+        @if (filteredMonsters().length==0){
+        <div class="center">No monsters found !</div>
+        }@else {
+        <div class="center">Found {{filteredMonsters().length}} monsters !</div>
+        }
+    </div>
+</div>
+
+<!-- carte avzc boucle stokage dans le storage avec button  -->
+<div class="cardBox" style="width: auto;height: auto;">
+    <h3 class="info">Boucle pour lister des cartes, avec ouverture vers page creation formulaire par click </h3>
+    <app-search-bar [(search)]="searchTwo"></app-search-bar>
+    <div class="card" style="border: none;">
+        @for (monster of filteredMonsters(); track monster){
+        <app-playing-card-boucle [monster]="monster" (click)="openMonster(monster)" />
+        }@empty {
+        <div class="center" style="color:rgba(0, 110, 255, 0.342);">No monsters found !</div>
+        }
+    </div>
+    @if (filteredMonsters().length>0){
+    <div class="center" style="color:rgba(255, 0, 242, 0.342);">Found {{filteredMonsters().length}} monsters !</div>
+    }
+    <div class="center">
+        <button (click)="addGenericMonster()">Add Generic Monster</button>
+        <button (click)="CreateMonster()">Create Monster from Survey</button>
+    </div>
+</div>
+
+<!-- carte avzc boucle stokage dans le storage avec button et le syle Material de google  -->
+<div class="cardBox" style="width: auto;height: auto;">
+    <h3 class="info">Boucle pour lister des cartes, avec ouverture vers page creation formulaire (Css Material de google) par click </h3>
+    <app-search-bar [(search)]="searchTwo"></app-search-bar>
+    <div class="card" style="border: none;">
+        @for (monster of filteredMonsters(); track monster){
+        <app-playing-card-boucle [monster]="monster" (click)="openMonsterMaterial(monster)" />
+        }@empty {
+        <div class="center" style="color:rgba(0, 110, 255, 0.342);">No monsters found !</div>
+        }
+    </div>
+    @if (filteredMonsters().length>0){
+    <div class="center" style="color:rgba(255, 0, 242, 0.342);">Found {{filteredMonsters().length}} monsters !</div>
+    }
+    <div class="center">
+        <button (click)="addGenericMonster()">Add Generic Monster </button>
+        <button (click)="CreateMonsterMaterial()">Create Monster from Survey Material</button>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<!-- Carte à jour avec bouton de changement -->
+<div class="ToggleMonster">
+    <h3 class="info">Carte à jour avec bouton de changement sur index :ToggleMonster() </h3>
+    <button class="btn-toggleMonster" (click)="ToggleMonster()">Toggle Monster</button>
+    <div class="card-list">
+        <app-playing-card [monster]="monsters[selectedMonsterIndex]" />
+    </div>
+</div>
+
+<!-- Carte à jour avec bouton de changement avec angular recent -->
+<div class="ToggleMonster">
+    <h3 class="info">Carte à jour avec bouton de changement sur index avec SIGNAL :ToggleMonsterTwo() </h3>
+    <button class="btn-toggleMonster" (click)="ToggleMonsterTwo()">Toggle Monster</button>
+    <div class="card-list">
+        <app-playing-card-two [monster]="monstersTwo()[selectedMonsterIndexTwo()]" />
+        <!-- <app-playing-card-two [monster]="selectedMonster()" /> -->
+    </div>
+</div>
+
+<div class="ToggleMonster">
+    <h3 class="info">Carte à jour avec bouton de changement sur index avec SIGNAL :ToggleMonsterTwo() </h3>
+    <button class="btn-toggleMonster" (click)="ToggleMonsterTwo()">Toggle Monster</button>
+    <div class="card-list">
+        <app-playing-card-two [monster]="selectedMonster()" />
+    </div>
+</div>

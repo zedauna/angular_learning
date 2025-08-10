@@ -1,0 +1,19 @@
+<!-- API -->
+<div class="cardBox" style="width: auto;height: auto;">
+    <h3 class="info">Carte à jour avec appel API </h3>
+    <app-search-bar [(search)]="searchAPI"></app-search-bar>
+    <div class="card" style="border: none;">
+        @for (monster of filteredMonstersAPI(); track monster){
+        <app-playing-card-boucle [monster]="monster" (click)="openMonsterAPI(monster)" />
+        }@empty {
+        <div class="center" style="color:rgba(0, 110, 255, 0.342);">No monsters found !</div>
+        }
+    </div>
+    @if (filteredMonstersAPI().length>0){
+    <div class="center" style="color:rgba(255, 0, 242, 0.342);">Found {{filteredMonstersAPI().length}} monsters !</div>
+    }
+    <div class="center">
+        <button (click)="addMonsterAPI()">Add Generic Monster </button>
+        <button (click)="CreateMonsterAPI()">Create Monster from Survey Material</button>
+    </div>
+</div>

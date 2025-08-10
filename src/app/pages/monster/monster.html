@@ -1,0 +1,13 @@
+<div class="card">
+    @if (monsterId()) {
+    <p>Monster {{monsterId()}}!</p>
+    <button (click)="next()">Next</button>
+    } @else {
+    <p>New monster!</p>
+    }
+</div>
+
+
+<div class="card">
+    <app-playing-card />
+</div>
