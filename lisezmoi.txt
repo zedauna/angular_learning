@@ -1,0 +1,16 @@
+Pour ng build
+
+npm install --save --legacy-peer-deps
+npm config set legacy-peer-deps true
+
+ls node_modules -Recurse -Directory
+
+ls node_modules -Recurse -Directory | foreach { rm $_ -Recurse -Force}
+
+
+Remove-Item -Recurse -Force .\node_modules
+Remove-Item -Force .\package-lock.json
+npm cache clean --force
+npm cache verify
+
+ls node_modules -Recurse -Directory | foreach { Remove-Item $_ -Recurse -Force }

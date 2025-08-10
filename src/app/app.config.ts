@@ -6,12 +6,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authTokenInterceptor } from './interceptors/auth-token-interceptor.js';
 
+import { provideAnimations, } from '@angular/platform-browser/animations';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideAnimationsAsync(), 
-    provideHttpClient(withInterceptors([authTokenInterceptor]))
+    provideHttpClient(withInterceptors([authTokenInterceptor])),
+    provideAnimations()
   ]
 };

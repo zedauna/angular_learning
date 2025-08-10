@@ -18,9 +18,6 @@ export class Monster implements OnInit,OnDestroy {
   routeSubscription: Subscription | null = null;
 
   ngOnInit(): void {
-    // const params = this.route.snapshot.params;
-    // this.monsterId.set(params['id'] ? parseInt(params['id']) : undefined);
-
     this.routeSubscription = this.route.params.subscribe(params => {
 			this.monsterId.set(params['id'] ? parseInt(params['id']) : undefined);
 		});

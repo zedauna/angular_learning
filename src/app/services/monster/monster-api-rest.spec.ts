@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MonsterApiRest } from './monster-api-rest';
+import { MonsterApiRestService as MonsterApiRest } from './monster-api-rest';
 
 describe('MonsterApiRest', () => {
   let service: MonsterApiRest;
